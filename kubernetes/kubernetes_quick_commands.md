@@ -1,7 +1,28 @@
+<style>
+r { color: Red; font-family:Monospace }
+o { color: Orange; font-family:Monospace }
+g { color: Green; font-family:Monospace }
+</style>
+
+
 # kubernetes quick commands
 
-Command related to kubernetes.
 
+
+<br>
+<br>
+<br>
+<br>
+
+# Command related to kubernetes.
+
+
+<br>
+<br>
+<br>
+<br>
+
+# Note
 
 - Managing a kubernetes cluster is a complicated task in itself.
 - For most , it makes sense to defer this management to the cloud, when this service is free in most cloud.
@@ -11,5 +32,44 @@ Command related to kubernetes.
 
 - Docker-in-Docker cluster.
 - `kubeadm`
+
+
+<br>
+<br>
+<br>
+<br>
+
+# Installing Kubernetes in GCP with Google Kubernetes Engine(GKE)
+
+<r> Make sure you have `gcloud tool` installed and configured.</r>
+
+
+
+```
+gcloud config set compute/zone us-west1-a
+gcloud container cluster create k8s-cluster1 --num-nodes=3
+gcloud container cluster get-credentials k8s-cluster1
+```
+
+
+<br>
+<br>
+<br>
+<br>
+
+# Installing Kubernetes with Azure Kubernetes Service
+
+```
+- Azure cloud Shell
+- This Shell has the `az tool` automatically installed and configured.
+```
+
+
+```
+# Created a resource group
+az group create --name=kuar --location-westus
+
+
+```
 
 
