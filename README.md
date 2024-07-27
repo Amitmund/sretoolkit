@@ -1,4 +1,4 @@
-# sretoolkit
+# Sretoolkit
 tools related to sretoolkit.
 
 # Git path on the local system
