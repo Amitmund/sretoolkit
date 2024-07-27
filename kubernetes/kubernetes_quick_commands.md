@@ -1,10 +1,3 @@
-<style>
-r { color: Red; font-family:Monospace }
-o { color: Orange; font-family:Monospace }
-g { color: Green; font-family:Monospace }
-</style>
-
-
 # kubernetes quick commands
 
 
@@ -41,7 +34,7 @@ g { color: Green; font-family:Monospace }
 
 # Installing Kubernetes in GCP with Google Kubernetes Engine(GKE)
 
-<r> Make sure you have `gcloud tool` installed and configured.</r>
+Make sure you have `gcloud tool` installed and configured.
 
 
 
