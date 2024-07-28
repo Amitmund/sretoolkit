@@ -128,3 +128,12 @@ https://kubernetes.io/docs/tasks/tools/
 <br>
 <br>
 
+
+## commands
+
+```
+# To display pods for a given namespace.
+kubectl get pod --namespace kube-system
+
+
+```
