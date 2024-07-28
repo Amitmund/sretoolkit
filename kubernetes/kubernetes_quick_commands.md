@@ -44,6 +44,9 @@ gcloud container cluster create k8s-cluster1 --num-nodes=3
 gcloud container cluster get-credentials k8s-cluster1
 ```
 
+More details:
+- https://cloud.google.com/kubernetes-engine/docs/deploy-app-cluster
+
 
 <br>
 <br>
@@ -60,9 +63,68 @@ gcloud container cluster get-credentials k8s-cluster1
 
 ```
 # Created a resource group
-az group create --name=kuar --location-westus
+az group create --name=k8s --location-westus
+
+
+# creating kubernetes cluster
+az aks create --resource-group=k8s --name=k8s-cluster
+
+# getting credentials
+az aks get-credentials --resource-group=k8s --name=k8s-cluster
+
+# installing k8s toolkit
+az aks install-cli
+```
+
+More details:
+- https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-cli
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+# Installing kubernetes on Amazon Web Services
+
+```
+EKS - Elastic Kubernetes Service (https://eksctl.io/)
+
+- Install the eksctl command-line tool
+
+eksctl create cluster
+
+eksctl create cluster --help
+
 
 
 ```
 
+
+<br>
+<br>
+
+kubernetes install tools:
+- https://kubernetes.io/docs/tasks/tools/
+
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+
+### Learning kubernetes from its home link
+https://kubernetes.io/docs/tasks/tools/
+
+
+
+<br>
+<br>
+<br>
+<br>
 
