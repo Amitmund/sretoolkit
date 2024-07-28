@@ -1,4 +1,10 @@
-# kubernetes quick commands
+### kubernetes quick commands
+- In this file, we will have notes related to the `kubernetes` commands.
+- Commands related to `kubectl` and `kubeadm`.
+- `kubectl`: This is the official kubernetes client.
+- `kubectl` a command-line tool for interacting with the `kubernetes API`.
+- `kubectl` can be used to `manage` most `kubernetes` `objects`, such as `Pods`, `ReplicaSes` and `Services`.
+- `kubectl` can also be used to `explore` and `verify` the overall health of the cluster.
 
 
 
@@ -7,7 +13,9 @@
 <br>
 <br>
 
-# Command related to kubernetes.
+---
+
+### Command related to kubernetes.
 
 
 <br>
@@ -15,7 +23,9 @@
 <br>
 <br>
 
-# Note
+---
+
+### Note
 
 - Managing a kubernetes cluster is a complicated task in itself.
 - For most , it makes sense to defer this management to the cloud, when this service is free in most cloud.
@@ -32,7 +42,10 @@
 <br>
 <br>
 
-# Installing Kubernetes in GCP with Google Kubernetes Engine(GKE)
+---
+
+
+### Installing Kubernetes in GCP with Google Kubernetes Engine(GKE)
 
 Make sure you have `gcloud tool` installed and configured.
 
@@ -53,7 +66,9 @@ More details:
 <br>
 <br>
 
-# Installing Kubernetes with Azure Kubernetes Service
+---
+
+### Installing Kubernetes with Azure Kubernetes Service
 
 ```
 - Azure cloud Shell
@@ -86,7 +101,9 @@ More details:
 <br>
 <br>
 
-# Installing kubernetes on Amazon Web Services
+---
+
+### Installing kubernetes on Amazon Web Services
 
 ```
 EKS - Elastic Kubernetes Service (https://eksctl.io/)
@@ -128,8 +145,10 @@ https://kubernetes.io/docs/tasks/tools/
 <br>
 <br>
 
+---
 
-## commands
+
+### commands
 
 ```
 # To display pods for a given namespace.
@@ -137,3 +156,67 @@ kubectl get pod --namespace kube-system
 
 
 ```
+
+
+<br>
+<br>
+<br>
+<br>
+
+---
+---
+
+
+### kubectl
+
+```
+kubectl version
+```
+
+output:
+```
+Client Version: v1.28.3
+Server Version: v1.27.4
+```
+<br>
+
+Will display the version of 
+- the local `kubectl` and 
+- version of `kubernetes API` server.
+- Although these are `backward` and `forward` compatible try to keep sync within two minor version.
+- Don't try to use newer features on an older cluster.
+
+
+
+
+<br>
+<br>
+
+Get a simple diagnostic for the cluster:
+```
+kubectl get componentstatuses
+```
+
+output:
+```
+NAME                 STATUS    MESSAGE   ERROR
+controller-manager   Healthy   ok        
+etcd-0               Healthy             
+scheduler            Healthy   ok      
+```
+
+<br>
+
+<u>Note:</u>
+
+The `controller-manager` is responsible for running various `controllers` that `regulate behavior` in the cluster:
+
+-  Example: Ensuring that all of the replicas of a service are availale and healthy.
+
+The `scheduler` is responsible for placing different `Pods` onto different nodes in the cluster.
+
+The `etcd` server is the storage for teh cluster where all of the API object are stored.
+
+<br>
+<br>
+
