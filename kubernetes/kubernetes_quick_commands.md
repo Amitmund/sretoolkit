@@ -167,7 +167,8 @@ kubectl get pod --namespace kube-system
 ---
 
 
-### kubectl
+
+### knowing kubectl client and kubernetes API version:
 
 ```
 kubectl version
@@ -188,11 +189,15 @@ Will display the version of
 
 
 
-
+<br>
+<br>
 <br>
 <br>
 
-Get a simple diagnostic for the cluster:
+---
+
+
+#### Get a simple diagnostic for the cluster:
 ```
 kubectl get componentstatuses
 ```
@@ -207,7 +212,7 @@ scheduler            Healthy   ok
 
 <br>
 
-<u>Note:</u>
+Note:
 
 The `controller-manager` is responsible for running various `controllers` that `regulate behavior` in the cluster:
 
@@ -219,4 +224,47 @@ The `etcd` server is the storage for teh cluster where all of the API object are
 
 <br>
 <br>
+<br>
+<br>
+
+---
+
+### Listing kubernetes Nodes
+
+```
+kubectl get nodes
+```
+
+
+output:
+
+```
+NAME       STATUS   ROLES           AGE   VERSION
+minikube   Ready    control-plane   8h    v1.27.4
+```
+
+<br>
+
+Note:
+
+In kubernetes, nodes are separated into:
+
+- control-plane 
+
+    - Which contain containers like:
+    - API Server
+    - Scheduler
+
+- worker nodes
+
+k8s won't generally schedule work onto control-plane node, ensuring that user workloads don't harm the overall of the cluster.
+
+<br>
+<br>
+<br>
+<br>
+
+---
+
+
 

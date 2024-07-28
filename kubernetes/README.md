@@ -2,6 +2,52 @@
 
 # Kubernetes Jargon:
 
+### Controller-manager
+
+```
+The `controller-manager` is responsible for running various `controllers` that `regulate behavior` in the cluster.
+
+Example: 
+Ensuring that all of the replicas of a service are availale and healthy.
+```
+
+<br>
+<br>
+
+---
+
+
+
+### scheduler
+
+```
+The `scheduler` is responsible for placing different `Pods` onto different nodes in the cluster.
+```
+
+
+<br>
+<br>
+
+---
+
+### etcd
+
+```
+The `etcd` server is the `storage` for the cluster where all of the `API` object are stored.
+```
+
+<br>
+<br>
+
+---
+
+
+
+
+
+
+
+
 - relieable
 
 - scalable distributed system
