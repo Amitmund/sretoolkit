@@ -673,10 +673,7 @@ You can permanently save the namespace for all subsequent kubectl commands in th
 
 ```
 
-kubectl config use-context my-dev
-Switched to context "my-dev".
 
-or
 
 kubectl config set-context --current --namespace=<namespace-name-here>
 
@@ -698,6 +695,78 @@ namespace: my-dev
 kubectl config view --minify | grep namespace:
 
 
+[or Not a good practice.] unless you want to nullify the details, bellow.
+
+```
+kubectl config use-context my-dev              <-------- Not good practice. Use set-context and not use-context.
+Switched to context "my-dev".
+
+```
+
+<br>
+
+Note:
+
+```
+kubectl config view --minify
+
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority: /Users/amitmund/.minikube/ca.crt
+    extensions:
+    - extension:
+        last-update: Mon, 29 Jul 2024 20:18:54 IST
+        provider: minikube.sigs.k8s.io
+        version: v1.31.2
+      name: cluster_info
+    server: https://localhost:53022
+  name: minikube
+contexts:
+- context:
+    cluster: minikube                     <-------------
+    extensions:
+    - extension:
+        last-update: Mon, 29 Jul 2024 20:18:54 IST
+        provider: minikube.sigs.k8s.io
+        version: v1.31.2
+      name: context_info
+    namespace: default                     <---------------
+    user: minikube
+  name: minikube
+current-context: minikube
+kind: Config
+preferences: {}
+users:
+- name: minikube
+  user:
+    client-certificate: /Users/amitmund/.minikube/profiles/minikube/client.crt
+    client-key: /Users/amitmund/.minikube/profiles/minikube/client.key
+
+
+#
+# Whenever I am using `use-context` the config file is getting nullify. However if we use set-context --current --namespace=<name> its working nice and not nullifying.
+#
+# So, with my understading use `set-context` over `use-context`                     <---------------
+#    
+
+amitmund@Amits-Mac-mini sretoolkit % kubectl config use-context my-dev
+Switched to context "my-dev".
+amitmund@Amits-Mac-mini sretoolkit % kubectl config view --minify     
+apiVersion: v1
+clusters: null
+contexts:
+- context:
+    cluster: ""
+    namespace: defaults
+    user: ""
+  name: my-dev
+current-context: my-dev
+kind: Config
+preferences: {}
+users: null
+
+```
 
 
 
@@ -710,8 +779,30 @@ kubectl config view --minify | grep namespace:
 
 
 
-### 
+### Kubernetes Proxy
+
+The kubernetes proxy is responsible for `routing network traffic` to load-balanced `services` in the kubernetes cluster. To do this job, the `proxy` must be present on every node in the cluster. 
+
+Kubernetes has an API object named `DaemonSet`, that is used in many clusters to accomplish this. If your cluster runs the kubernetes proxy with a Daemonset, you will see the proxies by running:
+
+```
+kubectl get daemonSets --namespace=kube-system kube-proxy
+
+NAME         DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE
+kube-proxy   1         1         1       1            1           kubernetes.io/os=linux   37h
 
 
+```
+
+`DaemonSet` may not be named as something else or may not be running regardless of `kube-proxy`.
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+---
 
 
