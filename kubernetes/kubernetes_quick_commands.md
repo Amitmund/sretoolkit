@@ -450,3 +450,13 @@ Resources requested by a Pod are guaranteed to be present on the node, while a P
 
 A Pod's limit can be higher than its request. In which case the extra resources are supplied on a best-effort basis. However they are not guaranteed to be present on the node.
 ```
+
+
+<br>
+<br>
+<br>
+<br>
+
+---
+
+

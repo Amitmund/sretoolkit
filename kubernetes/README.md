@@ -110,5 +110,13 @@ The `etcd` server is the `storage` for the cluster where all of the `API` object
 
 - service accounts
 
+- coredns
+
+- kube-apiserver
+
+- kube-proxy
+
+- storage-provisioner
+
 
 
