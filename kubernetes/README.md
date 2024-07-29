@@ -1,6 +1,35 @@
-# Quick README notes related to kubernetes.
 
 # Kubernetes Jargon:
+
+
+<br>
+<br>
+<br>
+<br>
+
+---
+
+# Quick README notes related to kubernetes.
+
+- https://kubernetes.io/docs/home/
+
+- Documentation
+- Getting Started
+- Concepts
+- Tasks
+- Tutorials
+- Reference
+- Contribute
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+---
+
 
 ### Controller-manager
 
@@ -60,11 +89,56 @@ The `etcd` server is the `storage` for the cluster where all of the `API` object
 
 - kubernetes cron jobs
 
-- daemon sets
 
-- deployments
+<br>
+<br>
+<br>
+<br>
+
+---
+
+### daemon sets
+
+https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+
+
+```
+What is Kubernetes Daemonset? DaemonSet is a Kubernetes feature that lets you run a Kubernetes pod on all cluster nodes that meet certain criteria. Every time a new node is added to a cluster, the pod is added to it, and when a node is removed from the cluster, the pod is removed.
+```
+
+<br>
+<br>
+<br>
+<br>
+
+---
+
+### deployments
+
+```
+A Kubernetes deployment represents the desired state for your application pods and ReplicaSets. It allows you to declare how many replicas of a pod should be running at a given time. If pods fail or need to be updated, the deployment ensures the desired state is maintained by starting new pods.
+
+```
+
+
+<br>
+<br>
+<br>
+<br>
+
+---
+
 
 - jobs
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+---
 
 - pods
 
@@ -220,6 +294,111 @@ kubectl get pods --namespace=<insert-namespace-name-here>
 - labes
 
 
+<br>
+<br>
+<br>
+<br>
+
+---
+
+### Links:
+
+- https://medium.com/slalom-technology/5-constructs-you-must-know-to-get-started-with-kubernetes-85e0079f9ace
+- https://chkrishna.medium.com/kubernetes-objects-e0a8b93b5cdc
 
 
+
+
+`pod`:
+
+```
+pod is the smallest deployable unit that exists in Kubernetes. Pods are simply a collection of containers with shared network and storage.
+```
+
+<br>
+
+`Deployment`:
+
+```
+A deployment is a Kubernetes construct that controls the creation and destruction of pods. This construct is particularly important because it is what keeps our application alive! A deployment is essentially a contract you make with Kubernetes that states the running conditions of your application. To better understand what we’re talking about, let’s take a look at the following declarative YAML file.
+```
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-kubernetes
+spec:
+  selector:
+    matchLabels:
+      app: hello-kubernetes
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hello-kubernetes
+    spec:
+      containers:
+      - name: hello-kubernetes
+        image: docker.io/bricerisingslalom/hello-k8s:latest
+        ports:
+        - containerPort: 80
+```
+
+```
+kubectl apply -f path/to/deployment.yaml
+```
+
+
+<br>
+
+`Service`:
+
+```
+A deployment ensures that our application is running inside of our cluster, but we have no way to access it from outside! This is where a service comes in handy. A service is used to manage how network traffic makes it to pods running somewhere within a cluster.
+```
+
+```
+kind: Service
+apiVersion: v1
+metadata:
+  name: hello-kubernetes
+spec:
+  type: NodePort
+  selector:
+    app: hello-kubernetes
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+```
+
+
+<br>
+
+`ConfigMaps` and `Secrets`
+
+```
+ConfigMaps and Secrets are actually two different Kubernetes constructs, but they are both used to externalize pod configurations; also, 5 is a more clickbaity number than 6. Both ConfigMaps and Secrets are essentially key-value stores that you can use to inject application configurations either as environment variables or a configuration file on your pods.
+```
+
+```
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hello-kubernetes
+data:
+  CONFIGMAP_CONFIG: Custom configmap config!
+```
+
+```
+apiVersion: v1
+kind: Secret
+metadata:
+  name: hello-kubernetes
+type: Opaque
+data:
+  SECRET_CONFIG: Q3VzdG9tIHNlY3JldCBjb25maWch
+
+```
 

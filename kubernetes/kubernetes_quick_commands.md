@@ -796,6 +796,10 @@ kube-proxy   1         1         1       1            1           kubernetes.io/
 
 `DaemonSet` may not be named as something else or may not be running regardless of `kube-proxy`.
 
+```
+What is Kubernetes Daemonset? DaemonSet is a Kubernetes feature that lets you run a Kubernetes pod on all cluster nodes that meet certain criteria. Every time a new node is added to a cluster, the pod is added to it, and when a node is removed from the cluster, the pod is removed.
+```
+
 
 
 <br>
@@ -804,5 +808,7 @@ kube-proxy   1         1         1       1            1           kubernetes.io/
 <br>
 
 ---
+
+### Kubernetes DNS
 
 
