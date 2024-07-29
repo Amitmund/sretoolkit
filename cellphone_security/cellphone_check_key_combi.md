@@ -3,7 +3,7 @@
 *#62#
 ```
 
-### If call is forwarded, to make it desible
+### If call is forwarded, to make it disable
 ```
 ##002#
 ```
