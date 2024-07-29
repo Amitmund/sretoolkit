@@ -8,6 +8,7 @@
 
 
 
+
 <br>
 <br>
 <br>
@@ -18,6 +19,8 @@
 ### Command related to kubernetes.
 
 - cheat-sheet: https://kubernetes.io/docs/reference/kubectl/quick-reference/
+
+
 
 
 <br>
@@ -32,11 +35,14 @@
 - Managing a kubernetes cluster is a complicated task in itself.
 - For most , it makes sense to defer this management to the cloud, when this service is free in most cloud.
 - `minikube` creates a single-node kubernetes cluster.
+- https://kubernetes.io/docs/concepts/policy/resource-quotas/ `k8s learning.
 
 <br>
 
 - Docker-in-Docker cluster.
 - `kubeadm`
+
+
 
 
 <br>
@@ -61,6 +67,10 @@ gcloud container cluster get-credentials k8s-cluster1
 
 More details:
 - https://cloud.google.com/kubernetes-engine/docs/deploy-app-cluster
+
+
+
+
 
 
 <br>
@@ -476,7 +486,7 @@ One of the interesting aspects of kubernetes is that many of the componentes tha
 
 ---
 
-### Different kubernetes `kind` :
+### Different kubernetes `kind` of kubernetes objects:
 
 
 
@@ -688,6 +698,19 @@ namespace: my-dev
 kubectl config view --minify | grep namespace:
 
 
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+---
+
+
+
+### 
 
 
 
