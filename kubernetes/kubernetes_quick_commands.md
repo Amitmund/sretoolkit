@@ -17,6 +17,8 @@
 
 ### Command related to kubernetes.
 
+- cheat-sheet: https://kubernetes.io/docs/reference/kubectl/quick-reference/
+
 
 <br>
 <br>
@@ -458,5 +460,259 @@ A Pod's limit can be higher than its request. In which case the extra resources 
 <br>
 
 ---
+
+### Cluster components
+
+One of the interesting aspects of kubernetes is that many of the componentes that make up the kubernetes cluster are actually deployed using kubernetes itself. Also note that, these components run in the `kube-system` namespace.
+
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+---
+
+### Different kubernetes `kind` :
+
+
+
+```
+
+[root@hsk-controller ~]# kubectl api-resources
+NAME                              SHORTNAMES       KIND
+bindings                                           Binding
+componentstatuses                 cs               ComponentStatus
+configmaps                        cm               ConfigMap
+endpoints                         ep               Endpoints
+events                            ev               Event
+limitranges                       limits           LimitRange
+namespaces                        ns               Namespace
+nodes                             no               Node
+persistentvolumeclaims            pvc              PersistentVolumeClaim
+persistentvolumes                 pv               PersistentVolume
+pods                              po               Pod
+podtemplates                                       PodTemplate
+replicationcontrollers            rc               ReplicationController
+resourcequotas                    quota            ResourceQuota
+secrets                                            Secret
+serviceaccounts                   sa               ServiceAccount
+services                          svc              Service
+initializerconfigurations                          InitializerConfiguration
+mutatingwebhookconfigurations                      MutatingWebhookConfiguration
+validatingwebhookconfigurations                    ValidatingWebhookConfiguration
+customresourcedefinitions         crd,crds         CustomResourceDefinition
+apiservices                                        APIService
+controllerrevisions                                ControllerRevision
+daemonsets                        ds               DaemonSet
+deployments                       deploy           Deployment
+replicasets                       rs               ReplicaSet
+statefulsets                      sts              StatefulSet
+tokenreviews                                       TokenReview
+localsubjectaccessreviews                          LocalSubjectAccessReview
+selfsubjectaccessreviews                           SelfSubjectAccessReview
+selfsubjectrulesreviews                            SelfSubjectRulesReview
+subjectaccessreviews                               SubjectAccessReview
+horizontalpodautoscalers          hpa              HorizontalPodAutoscaler
+cronjobs                          cj               CronJob
+jobs                                               Job
+brpolices                         br,bp            BrPolicy
+clusters                          rcc              Cluster
+filesystems                       rcfs             Filesystem
+objectstores                      rco              ObjectStore
+pools                             rcp              Pool
+certificatesigningrequests        csr              CertificateSigningRequest
+leases                                             Lease
+events                            ev               Event
+daemonsets                        ds               DaemonSet
+deployments                       deploy           Deployment
+ingresses                         ing              Ingress
+networkpolicies                   netpol           NetworkPolicy
+podsecuritypolicies               psp              PodSecurityPolicy
+replicasets                       rs               ReplicaSet
+nodes                                              NodeMetrics
+pods                                               PodMetrics
+networkpolicies                   netpol           NetworkPolicy
+poddisruptionbudgets              pdb              PodDisruptionBudget
+podsecuritypolicies               psp              PodSecurityPolicy
+clusterrolebindings                                ClusterRoleBinding
+clusterroles                                       ClusterRole
+rolebindings                                       RoleBinding
+roles                                              Role
+volumes                           rv               Volume
+priorityclasses                   pc               PriorityClass
+storageclasses                    sc               StorageClass
+volumeattachments                                  VolumeAttachment
+
+```
+
+A few key one:
+
+```
+pods
+Namespaces
+ReplicationController (Manages Pods)
+DeploymentController (Manages Pods)
+StatefulSets
+DaemonSets
+Services
+ConfigMaps
+Volumes
+
+```
+
+kind: Represent the type of kubernetes object created.
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+---
+
+### creating different namespace
+
+```
+
+vi my-namespace.yaml
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: namespace1
+
+
+# apply of the above yaml file.  
+kubectl create - ./my-namespace.yaml
+
+```
+
+```
+kubectl get namespaces namespace1
+```
+
+```
+kubectl get namespaces
+NAME              STATUS   AGE
+default           Active   35h
+kube-node-lease   Active   35h
+kube-public       Active   35h
+kube-system       Active   35h
+
+ 
+kubectl get namespaces kube-system
+NAME          STATUS   AGE
+kube-system   Active   35h
+ 
+kubectl get namespaces default    
+NAME      STATUS   AGE
+default   Active   35h
+
+```
+
+```
+kubectl describe namespaces default
+Name:         default
+Labels:       kubernetes.io/metadata.name=default
+Annotations:  <none>
+Status:       Active
+
+No resource quota.
+
+No LimitRange resource.
+```
+
+<br>
+Note:
+
+The namespace name shoud be a valid DNS name.
+
+
+```
+kubectl get pods --namespace=<insert-namespace-name-here>
+kubectl get pods --namespace=kube-system
+
+But in this case, "minify" will not get modify. So its good to use get-context...
+kubectl config view --minify | grep namespace:
+
+
+
+
+```
+
+<br>
+<br>
+
+`Setting the namespace preference`:
+
+You can permanently save the namespace for all subsequent kubectl commands in that context.
+
+```
+
+kubectl config use-context my-dev
+Switched to context "my-dev".
+
+or
+
+kubectl config set-context --current --namespace=<namespace-name-here>
+
+kubectl config set-context --current --namespace=my-dev
+
+output:
+Context "minikube" modified.
+
+kubectl config view --minify | grep namespace:         
+
+output:
+namespace: my-dev
+```
+
+<br>
+
+`Validate it`
+
+kubectl config view --minify | grep namespace:
+
+```
+kubectl config     
+Modify kubeconfig files using subcommands like "kubectl config set current-context my-context".
+
+ The loading order follows these rules:
+
+  1.  If the --kubeconfig flag is set, then only that file is loaded. The flag may only be set once and no merging takes
+place.
+  2.  If $KUBECONFIG environment variable is set, then it is used as a list of paths (normal path delimiting rules for
+your system). These paths are merged. When a value is modified, it is modified in the file that defines the stanza. When
+a value is created, it is created in the first file that exists. If no files in the chain exist, then it creates the
+last file in the list.
+  3.  Otherwise, ${HOME}/.kube/config is used and no merging takes place.
+
+Available Commands:
+  current-context   Display the current-context
+  delete-cluster    Delete the specified cluster from the kubeconfig
+  delete-context    Delete the specified context from the kubeconfig
+  delete-user       Delete the specified user from the kubeconfig
+  get-clusters      Display clusters defined in the kubeconfig
+  get-contexts      Describe one or many contexts
+  get-users         Display users defined in the kubeconfig
+  rename-context    Rename a context from the kubeconfig file
+  set               Set an individual value in a kubeconfig file
+  set-cluster       Set a cluster entry in kubeconfig
+  set-context       Set a context entry in kubeconfig
+  set-credentials   Set a user entry in kubeconfig
+  unset             Unset an individual value in a kubeconfig file
+  use-context       Set the current-context in a kubeconfig file
+  view              Display merged kubeconfig settings or a specified kubeconfig file
+
+Usage:
+  kubectl config SUBCOMMAND [options]
+```
+
+
 
 
