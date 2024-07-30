@@ -931,7 +931,7 @@ And next time, you can just use: the above command only....
 ```
 
 
-Contexts can also be used to manage different clusters or different 
+Contexts can also be used to manage different clusters or different users for authenticating to those clusters using the `--users` or `--clusters` flags with the `set-context` command.
 
 <br>
 <br>
