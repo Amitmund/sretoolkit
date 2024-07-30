@@ -809,6 +809,64 @@ What is Kubernetes Daemonset? DaemonSet is a Kubernetes feature that lets you ru
 
 ---
 
-### Kubernetes DNS
+### Kubernetes DNS (coredns)
+
+Kuberbetes also runs a DNS server for providing nameing and discovery for the services that are defined in the cluster. Its get deployed in kubernetes envirounment using replication depending upon the size of your cluster.
+
+We have `coredns` for this, but it can be any other DNS too.
+
+```
+kubectl get deployments --namespace=kube-system coredns
+
+output:
+NAME      READY   UP-TO-DATE   AVAILABLE   AGE
+coredns   1/1     1            1           2d
+
+
+
+kubectl get pods -A | grep -i dns
+kube-system   coredns-5d78c9869d-hwzck           1/1     Running   6 (89s ago)    2d
+
+```
+
+There is also a kubernetes `service` that performs load balancing for the DNS server.
+
+```
+kubectl get services --namespace=kube-system coredns
+
+[or]
+
+kubectl get services --namespace=kube-system         
+NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
+kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   2d
+
+```
+
+By default kubectl commands runs in the `default` namespace. You might like to use `-A` options to look around different namespace. 
+
+<br>
+<br>
+<br>
+<br>
+
+---
+
+### Kubernetes Dashboard
+
+https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
+
+
+- Deploy and Access the kubernetes Dashboard.
+
+
+<br>
+<br>
+<br>
+<br>
+
+---
+
+
+
 
 
