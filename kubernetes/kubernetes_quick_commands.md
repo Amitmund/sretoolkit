@@ -179,6 +179,17 @@ kubectl get pod --namespace kube-system
 ---
 
 
+### Common kubectl Commands
+
+`kubectl` command-line utility is a powerful tool. It is used to create `objects` and `interact with kubernetes API`. 
+
+<br>
+<br>
+<br>
+<br>
+
+---
+
 
 ### knowing kubectl client and kubernetes API version:
 
@@ -851,7 +862,7 @@ By default kubectl commands runs in the `default` namespace. You might like to u
 
 ---
 
-### Kubernetes Dashboard
+### Kubernetes UI - Dashboard
 
 https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 
@@ -866,7 +877,67 @@ https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 
 ---
 
+### Namespaces
+
+Kubernetes use namespaces to organize objects in the cluster.  You can think of each `namespace` as a folder that holds a set of objects. 
+
+By default, the `kubectl` command-line tool interacts with the `default namespace`.
+
+if you want to use a different namespace, you can pass `kubectl` the `--namespace` flag. 
+
+```
+kubectl get pods --namespace=kube-system
+```
+
+If you want to interect with all the namespaces, you can pass the `--all-namespaces` flag.
 
 
+
+<br>
+<br>
+<br>
+<br>
+
+---
+
+### Contexts
+
+If you want to change the default namespace more permanently, you can use a `context`. This gets recorded in a `kubectl configuration` file, usually located at `$HOME/.kube/config`. This configuration file also stores how to both find and authenticate to your cluster. For example, you can create a context with a different default namespace for your kubectl commands using:
+
+```
+kubectl config set-context my-context --namespace=my-dev
+
+
+
+if you use --current inplace of my-context it will update the current context.  
+
+<--- try understanding what is Context --->
+```
+
+This will create a new `context`, but it doesn't actually start using it yet. To use this newly created context, you need to run:
+
+```
+kubectl config use-context my-context
+```
+
+So, you can think of this ?
+
+```
+kubectl config set-context my-dev --namespace=my-dev
+
+kubectl config use-context my-dev
+
+And next time, you can just use: the above command only....
+```
+
+
+Contexts can also be used to manage different clusters or different 
+
+<br>
+<br>
+<br>
+<br>
+
+---
 
 
