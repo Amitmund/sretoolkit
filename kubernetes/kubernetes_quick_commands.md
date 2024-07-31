@@ -940,4 +940,47 @@ Contexts can also be used to manage different clusters or different users for au
 
 ---
 
+### Viewing Kubernetes API Objects
 
+Everything contained in Kubernetes is represented by RESTful resources. Note that, each kubernetes object exists at a `unique HTTP path`. 
+
+Example:
+
+https://your-k8s.com/api/v1/name-spaces/default/pods/my-pod
+
+The above https path lead to the representation of a pod in the default namespace named my-pod. The kubectl command makes HTTP requests to these URLs to access the kubernetes objects that reside at these path.
+
+The most basic command for `viewing` kubernetes objects via kubectl is `get`. If you run:
+
+`kubectl get <resource-name>` 
+
+Example:
+
+`kubectl get pods`
+
+you will get a listing of all resources in the current namespace. If you want to get a specific resource, you can use:
+
+`kubectl get <resource-name> <object-name>`
+
+Example:
+
+`kubectl get pods my-pod`
+
+remember: https://your-k8s.com/api/v1/name-spaces/default/pods/my-pod
+
+
+By default, kubectl uses a human-readable printer for viewing the responses from the API server, but this human-readable printer removes many of the details of the objects to fit each object on one terminal line.
+
+`-o wide` 
+
+this additional flag will give more details on a longer line.  If you want to view the complete object, you can also view the object as raw `JSON` or `YAML` using:
+
+`-o json` or `-o yaml`
+
+
+
+`kubectl get pods my-pod -o wide`
+
+`kubectl get pods my-pod -o json`
+
+`kubectl get pods my-pod -o yaml`
