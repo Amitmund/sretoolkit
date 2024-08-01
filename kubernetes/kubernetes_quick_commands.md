@@ -1054,6 +1054,8 @@ Listing supported fields, example: `pods` (resource-name)
 kubectl explain pods
 ```
 
+We also have `--watch`  flag to enables stream of data.
+
 <br>
 <br>
 <br>
