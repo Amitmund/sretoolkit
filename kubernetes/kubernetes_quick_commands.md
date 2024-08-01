@@ -984,3 +984,66 @@ this additional flag will give more details on a longer line.  If you want to vi
 `kubectl get pods my-pod -o json`
 
 `kubectl get pods my-pod -o yaml`
+
+
+<br>
+
+```
+If you use `--no-headers` flag, kubectl will skip the headers at the top of the human-readable output.
+
+Example:
+kubectl get pods -A --no-headers
+```
+
+<br>
+<br>
+<br>
+<br>
+
+---
+
+
+### Extracting specific fields from the object.
+
+Note: kubectl uses the JSONPath query language. 
+```
+kubectl get pods my-pod -o jsonpath --template={.status.podIP}
+
+Example:
+kubectl get pods etcd-minikube --namespace=kube-system -o jsonpath --template={.status.podIP}
+10.0.2.15%                             
+
+Another example:
+kubectl get pods etcd-minikube --namespace=kube-system -o jsonpath --template={.metadata.labels.component}
+etcd%                                  
+
+```
+
+<br>
+<br>
+<br>
+<br>
+
+---
+
+### For multiple objects:
+```
+kubectl get pods,services
+```
+
+
+<br>
+<br>
+<br>
+<br>
+
+---
+
+
+### Looking for `details` information about an `objects`:
+
+```
+kubectl describe <resource-name> <object-name>
+
+kubectl describe pods etcd-minikube --namespace=kube-system
+```
