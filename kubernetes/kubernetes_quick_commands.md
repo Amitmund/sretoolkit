@@ -1047,3 +1047,17 @@ kubectl describe <resource-name> <object-name>
 
 kubectl describe pods etcd-minikube --namespace=kube-system
 ```
+
+Listing supported fields, example: `pods` (resource-name)
+
+```
+kubectl explain pods
+```
+
+<br>
+<br>
+<br>
+<br>
+
+---
+
