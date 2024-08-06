@@ -45,6 +45,51 @@ An organizatoin can have multiple kubernetes cluster. And we can configure which
 <br><br>
 ---
 
+### What is the kubectl syntax
+
+kubectl [command] [TYPE] [NAME] [flags]
+
+
+command:
+
+
+
+
+
+
+<br><br>
+---
+
+### Kuberbetes Objects
+
+```
+Common Options
+Configuration Files (Manifest files)
+Cluster Management & Context
+Daemonsets
+Deployments
+Events
+Logs
+Namespaces
+Nodes
+Pods
+Replication Controllers
+ReplicaSets
+Secrets
+Services
+Service Accounts
+
+```
+
+<br><br>
+---
+
+
+
+
+<br><br>
+---
+
 ### Listing kubernet Kind:
 
 ```
