@@ -305,3 +305,44 @@ find()    --> to find the position of a substring
 
 and much more...
 ```
+
+### Few string methods
+
+```python
+name = "Foo"
+print(name.lower()) #"foo"
+print(name) #"Foo"
+```
+
+
+```python
+name = "foo"
+print(len(name)) #3
+```
+
+```python
+name = "Amit"
+print("mit" in name) #True
+```
+
+```Python
+name = "Amit"
+name[0] #'A'
+name[1] #'m'
+name[2] #'i'
+name[-1] #'t'
+```
+
+```python
+name = "Roger"
+name[0:2] #"Ro"
+name[:2] #"Ro"
+name[2:] #"ger"
+```
+
+
+### Escape Character
+
+```python
+name = "Am\"it" #Am"it
+```
