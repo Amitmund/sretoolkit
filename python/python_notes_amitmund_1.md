@@ -346,3 +346,28 @@ name[2:] #"ger"
 ```python
 name = "Am\"it" #Am"it
 ```
+
+### if elif else
+
+```python
+status = True
+
+if status:
+    # Run come code here
+    pass
+else:
+    # run some other code.
+    pass
+```
+
+<br>
+
+Note:
+```
+number: True, unless for the number is 0
+
+string: False only when empty.
+
+list, tuple, sets, dictionary are False only when empty.`
+```
+
