@@ -12,6 +12,10 @@
 # Quick README notes related to kubernetes.
 
 - https://kubernetes.io/docs/home/
+- https://medium.com/@seifeddinerajhi
+
+
+
 
 - Documentation
 - Getting Started

@@ -27,6 +27,17 @@ Lets try to create different subdirectory related to a specific project/learning
 
 
 
+<br>
+<br>
+<br>
+<br>
+
+
+# Reading Links:
+
+- [seifeddinerajhi](https://medium.com/@seifeddinerajhi)
+
+- 
 
 
 

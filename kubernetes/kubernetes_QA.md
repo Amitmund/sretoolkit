@@ -1,9 +1,18 @@
 # Kubernetes QA
 
 
+
+
+
+
+
+
+
+
+
 <br>
 
-### What is the difference between context and namespace in kubernetes.
+## What is the difference between context and namespace in kubernetes?
 
 Kubernetes Namespace:
 When we create a kubernetes cluster, we can create different environments within this cluster. So, we try to group the resources depends on different environment, and each of them are called a "namespace."
@@ -31,7 +40,7 @@ Kubernetes Contexts:
 An organizatoin can have multiple kubernetes cluster. And we can configure which user, which cluster and which default namespace by default we can communicate. This is what we can define in `context`.
 
 
-#### Quick Differences:
+### Quick Differences:
 
 |Feature	   |             Namespaces	                |            Contexts                 |
 |--------------|----------------------------------------|-------------------------------------|
@@ -41,20 +50,127 @@ An organizatoin can have multiple kubernetes cluster. And we can configure which
 |Configuration |Managed by kubectl create namespace	    |Managed by kubectl config set-context|
 
 
+<br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## what is the difference between resource, object and kind in kubernetes ?
+
+<br>
+
+### Analogy
+
+Imagine a library:
+
+`Resource`: The library itself (a collection of books).
+
+`Object`: A specific book in the library.
+
+`Kind`: The genre of the book (e.g., fiction, non-fiction).
+
+<br>
+
+### Example:
+
+Let's take a `Pod` as an example:
+
+- The `pods` is a `resource`.
+
+- A specific `Pod` with the name `my-pod` is an `object`.
+
+- The `Pod` is the `kind` of this `object`, defining its structure and attributes.
+
+
+<br>
+
+### Resource:
+
+In Kubernetes, a resource is a collection of API objects of a specific type.  It's essentially an endpoint in the Kubernetes API. 
+ 
+ For example, the `pods` resource is a `collection of Pod objects`
+
+<br>
+
+### Object:
+
+An object is an `instance of a resource`. It's a concrete representation of a concept within the cluster, such as a `Pod`, `Deployment`, or `Service`. 
+
+ Objects have a defined schema (their kind) and contain information about their desired state and actual state.
+
+
+<br>
+
+### Kind:
+
+The kind specifies the type of an object.
+
+ It's the schema that defines the structure and attributes of an object. For instance, the `Pod` kind defines the structure of a Pod object, including its containers, volumes, and other properties
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <br><br>
----
 
-### What is the kubectl syntax
 
+## What is the kubectl syntax
+
+```
 kubectl [command] [TYPE] [NAME] [flags]
+```
+
+<br>
+
+`command`: Specifies the operation that you want to perform on one or more resources, for example `create`, `get`, `describe`, `delete`
+
+`TYPE`: Specifies the `resource type`. Resource types are case-insensitive and you can specify the singular, plural, or abbreviated forms. For example, the following commands produce the same output:
+
+```
+kubectl get pod pod1
+kubectl get pods pod1
+kubectl get po pod1
+```
+
+<br>
+
+`NAME`: Specifies the `name of the resource`. Names are `case-sensitive`. If the name is omitted, details for all resources are displaye., 
+
+For example `kubectl get pods`.
 
 
-command:
 
 
 
+<br><br>
 
+
+## resource type:
+
+https://kubernetes.io/docs/reference/kubectl/#resource-types
+
+`kubectl api-resources`
 
 
 <br><br>
