@@ -33,10 +33,10 @@ It's important to note that Deployment objects are used to manage stateless appl
 
 ### ReplicaSet
 
-- In Kubernetes, Deployments don’t manage Pods directly. 
-- That’s the job of the ReplicaSet object. 
-- When you create a Deployment in Kubernetes, a ReplicaSet is created automatically.
-- The ReplicaSet ensures that the desired number of replicas (copies) are running at all times by creating or deleting Pods as needed.
+- In Kubernetes, `Deployments don’t manage Pods directly`. 
+- T`hat’s the job of the ReplicaSet object`. 
+- When you create a `Deployment in Kubernetes, creates a ReplicaSet is created automatically`.
+- The `ReplicaSet ensures that the desired number of replicas (copies) are running` at all times by creating or deleting Pods as needed.
 
 To accomplish this, Kubernetes uses a concept called reconciliation loops. A reconciliation loop is a process that compares the desired state of a system with its current state and takes actions to bring the current state in line with the desired state.
 
