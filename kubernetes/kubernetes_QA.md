@@ -1,18 +1,26 @@
 # Kubernetes QA
 
+**Table of Content** <a id="Home"></a>
+- [context-vs-namespace](#context-vs-namespace)
+- [resource-vs-object-vs-kind](#resource-vs-object-vs-kind)
+- [kubectl-syntax](#kubectl-syntax)
 
 
 
 
 
+<!-- Table of content -->
 
 
+<br><br>
 
-
+<!------------------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------------------>
 
 <br>
+<a id="context-vs-namespace"></a>
 
-## What is the difference between context and namespace in kubernetes?
+## What is the difference between context and namespace in kubernetes? [⇪](#Home) 
 
 Kubernetes Namespace:
 When we create a kubernetes cluster, we can create different environments within this cluster. So, we try to group the resources depends on different environment, and each of them are called a "namespace."
@@ -53,21 +61,13 @@ An organizatoin can have multiple kubernetes cluster. And we can configure which
 <br><br>
 
 
+<!------------------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------------------>
 
 
+<a id="resource-vs-object-vs-kind"></a>
 
-
-
-
-
-
-
-
-
-
-
-
-## what is the difference between resource, object and kind in kubernetes ?
+## what is the difference between resource, object and kind in kubernetes ? [⇪](#Home) 
 
 <br>
 
@@ -135,7 +135,13 @@ The kind specifies the type of an object.
 <br><br>
 
 
-## What is the kubectl syntax
+<!------------------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------------------>
+
+
+<a id="kubectl-syntax"></a>
+
+## What is the kubectl syntax? [⇪](#Home) 
 
 ```
 kubectl [command] [TYPE] [NAME] [flags]
