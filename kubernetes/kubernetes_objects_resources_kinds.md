@@ -159,3 +159,50 @@ Furthermore, the `Service also provides some simple load balancing`. If clients 
 
 A Kubernetes namespace is `a way to divide a single Kubernetes cluster into multiple virtual clusters`. This allows resources to be isolated from one another. Once a namespace is created, you can launch Kubernetes objects, like Pods, which will only exist in that namespace.
 
+Imagine AppA, and AppB are almost identical. One is version 1.16 of an app, the other is version 1.17. They use almost the same objects, the same Pod structures, the same Services, and so on. Since they're so similar, there's a risk of them interfering with each other. For example, AppA might accidentally send requests to a similar Service or Pod used by AppB. But you want to test the new 1.17 version in a realistic scenario in the same cluster, using the same objects and definitions.
+
+
+By using namespaces, you can `perform as many operations as you need while eliminating the risk of impacting resources that are in another namespace`. It's almost as if you have a second Kubernetes cluster. AppA runs in its own (virtual) cluster. AppB runs in a separate (virtual) cluster. But you don't actually have to go through the trouble of setting up an additional cluster. AppA and AppB are logically isolated from each other when they exist in separate namespaces. Even if they run identical Pods that want to access Services with identical names, there's no risk of them interfering with each other.
+
+
+<br><br>
+
+
+<!---------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------->
+
+### ConfigMaps & Secrets
+
+ConfigMaps and Secrets are two very important objects that `allow you to configure the apps that run in your Pods`. Configuring apps refers to setting various parameters or options that control the behaviors of the apps. This can include things like database connection strings or API keys.
+
+
+`ConfigMaps are used to store non-sensitive configuration values`. For example, environment variables used to provide runtime configuration information such as the URL of an external API, rather than confidential information such as passwords, are considered non-sensitive data.
+
+`Secrets, on the other hand, are meant to hold sensitive configuration values`, such as database passwords, API keys, and other information that only authorized apps should be able to access.
+
+`ConfigMaps and Secrets can be injected into Pods with the help of environment variables`, command-line arguments, or configuration files included in the volumes attached to those Pods.
+
+`By using ConfigMaps and Secrets, you decouple the applications running in your Pods from their configuration values`. This means you can easily update the configuration of your applications without having to rebuild or redeploy them.
+
+
+<br><br>
+
+
+<!---------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------->
+
+### Job
+
+A job object is used to r`un specific tasks` that have the following properties:
+
+- They are short-lived.
+- They need to be executed once.
+- But most importantly, Kubernetes has to make sure that the task has been executed correctly and finished its job.
+
+- Somewhat like `cron jobs`.
+
+An `example` of where a Kubernetes job can be useful is a `database backup`. This does not run continuously, so it's a short-lived process. It just needs to start, complete, then exit. It has to be executed once. Even if the backup needs to happen weekly, there will be one separate job per week (CronJobs can be used for jobs that repeat periodically).
+
+Each job has to finish its own weekly task. But it needs to ensure that the Pod executing the backup fully completes this job. For example, a Pod might start a backup. But the database is huge, so this can take hours. For some reason, the backup process fails at 68% progress. Kubernetes sees that the Pod has failed the task, so it can create another one to retry. It will keep on retrying until, finally, one Pod manages to back up the entire database.
+
+In this case, the job required one Pod, and one successful run for one Pod (to ensure the task was completed successfully). But other jobs might require multiple Pods (which can run in parallel) and/or multiple successful runs. For example, a job will be considered complete, only when at least 3 Pods had successful runs and achieved 100% progress on their tasks.
