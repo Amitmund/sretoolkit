@@ -90,3 +90,72 @@ Like `ReplicaSets, DaemonSets are managed by a reconciliation loop`. A reconcili
 
 ### PersistentVolume
 
+PersistentVolume `represents a piece of storage that you can attach to your Pod(s)`.
+
+The reason it's called "persistent" is because it's not tied to the life cycle of your Pod. In other words, even if your Pod gets deleted, the PersistentVolume will survive.
+
+And there are a lot of different types of storage that you can attach using a PersistentVolume, like local disks, network storage, and cloud storage.
+
+There are a few different `use cases for PersistentVolumes in Kubernetes`. One common use case is for `databases`. If you're running a database inside a Pod, you'll likely want to store the database files on a separate piece of storage that can persist even if the Pod gets deleted. And PersistentVolume can do that.
+
+
+<br><br>
+
+
+<!---------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------->
+
+
+
+### Question: StatefulSet Vs PersistentVolume:
+
+#### Key differences
+
+`Purpose`: PVs focus on providing persistent storage, while StatefulSets focus on managing stateful applications with persistent identity and ordering.
+
+`Scope`: PVs can be used across multiple components, whereas StatefulSets are designed for a specific set of pods with unique identities.
+
+`Data sharing`: PVs allow data sharing across pods, whereas StatefulSets ensure each pod has its own unique persistent volume.
+
+#### When to use each
+
+Use `PVs` when you need to provide `persistent storage for a stateless application or a component that doesn’t require sticky identities.`
+
+Use `StatefulSets` when you n`eed to manage a stateful application` with persistent identity and ordering, such as databases, messaging systems, or distributed systems with unique node identities.
+
+
+In summary, `Persistent Volumes provide persistent storage`, while `StatefulSets manage stateful applications with sticky identities and ordering`. 
+
+Choose StatefulSets when your application requires persistent identity and ordering, and PVs when you need persistent storage for a stateless application.
+
+
+
+<br><br>
+
+
+<!---------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------->
+
+### Service
+
+A Kubernetes `Service` is `a way to access a group of Pods that provide the same functionality`. It creates a single, `consistent point of entry for clients to access the service`, regardless of the location of the Pods.
+
+For example, imagine you have a Kubernetes cluster with multiple Pods running a web application. Each Pod has its own IP address, but this can change at any time if the Pod is moved to another node, or recreated. So the IP address becomes a "moving target". The destination(s) that clients should reach is unstable, and hard to track.
+
+To make it easier for clients to access the web application, you can `create a Kubernetes Service that has a stable IP address`. Clients can then connect to that IP, and their requests will be routed to one of the Pods running the web application.
+
+One of `the key benefits of using a Service is that it provides a stable endpoint that doesn't change even if the underlying Pods are recreated or replaced`. This makes it much easier to update and maintain the application, as clients don't need to be updated with new IP addresses.
+
+Furthermore, the `Service also provides some simple load balancing`. If clients would connect to a certain IP address of a specific Pod, that Pod would be overused, while the other ones would be sitting idle, doing nothing. But the Service can spread out requests to multiple Pods (load balance). By spreading these out, all Pods are used equally. However, each one has less work to do, as it only receives a small part of the total number of incoming requests.
+
+
+<br><br>
+
+
+<!---------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------->
+
+### Namespaces
+
+A Kubernetes namespace is `a way to divide a single Kubernetes cluster into multiple virtual clusters`. This allows resources to be isolated from one another. Once a namespace is created, you can launch Kubernetes objects, like Pods, which will only exist in that namespace.
+
