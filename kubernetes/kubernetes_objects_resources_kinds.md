@@ -61,4 +61,32 @@ This allows for a consistent naming scheme for each Pod and its associated resou
 
 When a `Pod in a StatefulSet must be replaced`, for example, due to node failure, the new Pod is assigned the same numeric identifier as the previous Pod. This ensures that the new Pod has the same unique identity and is attached to the same persistent storage (Volume) that the previous Pod was using.
 
+This `allows for the preservation of state and data across Pod replacements`. This is important for applications that do work that periodically adds, removes, or changes some data. They basically need to remember "what has happened in the past" (previous state). For example, a Pod can add a new entry to a database, maybe the email address of a new user. If the Pod has to be recreated, you don't want to lose the email address that was previously added.
+
+<br><br>
+
+
+<!---------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------->
+
+
+### DaemonSets
+
+A DaemonSet `ensures that a copy of a Pod is running across all, or a subset of nodes in a Kubernetes cluster`.
+
+Example: `You want a monitoring pods tools` need to be installed through-out your kubernetes cluster. 
+
+DaemonSets are `useful for running system-level services`, such as `logging or monitoring agents`, that need to run on every node in a cluster. Logging agents are used to collect log data from all the nodes in a cluster and send it to a centralized logging system for storage and analysis. Monitoring agents are used to collect metrics and performance data from all the nodes in a cluster, and send it to a monitoring system for analysis and alerting.
+
+Like `ReplicaSets, DaemonSets are managed by a reconciliation loop`. A reconciliation loop is a mechanism that continuously checks and compares the desired state of a resource with the current state. The loop runs periodically and ensures that the DaemonSet is always in the desired state, automatically creating or deleting Pods as necessary.
+
+
+<br><br>
+
+
+<!---------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------->
+
+
+### PersistentVolume
 
