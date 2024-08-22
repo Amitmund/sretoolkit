@@ -24,3 +24,21 @@ When you create a Deployment, you provide a Pod template, which defines the conf
 It's important to note that Deployment objects are used to manage stateless applications. Stateless applications are those that do not maintain any persistent data or state. This means that if a container running the application crashes or is terminated, it can be easily replaced. There's no need to preserve any data before deleting the old container and replacing it with a new one. Examples of stateless applications include web servers and load balancers.
 
 
+<br><br>
+
+
+<!---------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------->
+
+
+### ReplicaSet
+
+- In Kubernetes, Deployments don’t manage Pods directly. 
+- That’s the job of the ReplicaSet object. 
+- When you create a Deployment in Kubernetes, a ReplicaSet is created automatically.
+- The ReplicaSet ensures that the desired number of replicas (copies) are running at all times by creating or deleting Pods as needed.
+
+To accomplish this, Kubernetes uses a concept called reconciliation loops. A reconciliation loop is a process that compares the desired state of a system with its current state and takes actions to bring the current state in line with the desired state.
+
+
+
