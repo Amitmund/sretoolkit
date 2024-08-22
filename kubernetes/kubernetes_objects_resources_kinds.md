@@ -34,7 +34,7 @@ It's important to note that Deployment objects are used to manage stateless appl
 ### ReplicaSet
 
 - In Kubernetes, `Deployments don’t manage Pods directly`. 
-- T`hat’s the job of the ReplicaSet object`. 
+- `That’s the job of the ReplicaSet object`. 
 - When you create a `Deployment in Kubernetes, creates a ReplicaSet is created automatically`.
 - The `ReplicaSet ensures that the desired number of replicas (copies) are running` at all times by creating or deleting Pods as needed.
 
