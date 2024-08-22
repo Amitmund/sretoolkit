@@ -155,7 +155,7 @@ Choose StatefulSets when your application requires persistent identity and order
 <!---------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------->
 
-<a id="Services"></a>
+<a id="Service"></a>
 ### Service [⇪](#Home)
 
 A Kubernetes `Service` is `a way to access a group of Pods that provide the same functionality`. It creates a single, `consistent point of entry for clients to access the service`, regardless of the location of the Pods.
