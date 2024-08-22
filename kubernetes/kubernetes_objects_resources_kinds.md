@@ -1,6 +1,7 @@
 # Kubernetes objects
 
-**Table of content:**
+
+**Table of content:** <a id="Home"></a>
 - [Pods](#Pods)
 - [Deployment](#Deployment)
 - [ReplicaSet](#ReplicaSet)
@@ -20,7 +21,7 @@
 
 <br><br>
 <a id="Pods"></a>
-### Pods 
+### Pods [⇪](#Home)
 
 Pods are the fundamental building blocks of the Kubernetes system. They are used to deploy, scale, and manage containerized applications in a cluster.
 
@@ -31,7 +32,7 @@ Pods are the fundamental building blocks of the Kubernetes system. They are used
 <!---------------------------------------------------------------------------->
 
 <a id="Deployment"></a>
-### Deployment
+### Deployment [⇪](#Home)
 
 In Kubernetes, a Deployment object is used to manage the lifecycle of one or more identical Pods. A Deployment allows you to declaratively manage the desired state of your application, such as the number of replicas, the image to use for the Pods, and the resources required. 
 
@@ -49,7 +50,7 @@ It's important to note that Deployment objects are used to manage stateless appl
 <!---------------------------------------------------------------------------->
 
 <a id="ReplicaSet"></a>
-### ReplicaSet
+### ReplicaSet [⇪](#Home)
 
 - In Kubernetes, `Deployments don’t manage Pods directly`. 
 - `That’s the job of the ReplicaSet object`. 
@@ -66,7 +67,7 @@ To accomplish this, Kubernetes uses a concept called reconciliation loops. A rec
 <!---------------------------------------------------------------------------->
 
 <a id="StatefulSet"></a>
-### StatefulSet
+### StatefulSet [⇪](#Home)
 
 - A StatefulSet is a Kubernetes object that is used to manage stateful applications.
 - This state is typically stored in a persistent storage backend, such as a disk, or a database
@@ -88,7 +89,7 @@ This `allows for the preservation of state and data across Pod replacements`. Th
 <!---------------------------------------------------------------------------->
 
 <a id="DaemonSets"></a>
-### DaemonSets
+### DaemonSets [⇪](#Home)
 
 A DaemonSet `ensures that a copy of a Pod is running across all, or a subset of nodes in a Kubernetes cluster`.
 
@@ -106,7 +107,7 @@ Like `ReplicaSets, DaemonSets are managed by a reconciliation loop`. A reconcili
 <!---------------------------------------------------------------------------->
 
 <a id="PersistentVolume"></a>
-### PersistentVolume
+### PersistentVolume [⇪](#Home)
 
 PersistentVolume `represents a piece of storage that you can attach to your Pod(s)`.
 
@@ -125,7 +126,7 @@ There are a few different `use cases for PersistentVolumes in Kubernetes`. One c
 
 
 <a id="Stateful-vs-PersistentVolume"></a>
-### Question: StatefulSet Vs PersistentVolume:
+### Question: StatefulSet Vs PersistentVolume: [⇪](#Home)
 
 #### Key differences
 
@@ -155,7 +156,7 @@ Choose StatefulSets when your application requires persistent identity and order
 <!---------------------------------------------------------------------------->
 
 <a id="Services"></a>
-### Service
+### Service [⇪](#Home)
 
 A Kubernetes `Service` is `a way to access a group of Pods that provide the same functionality`. It creates a single, `consistent point of entry for clients to access the service`, regardless of the location of the Pods.
 
@@ -175,7 +176,7 @@ Furthermore, the `Service also provides some simple load balancing`. If clients 
 <!---------------------------------------------------------------------------->
 
 <a id="Namespaces"></a>
-### Namespaces
+### Namespaces [⇪](#Home)
 
 A Kubernetes namespace is `a way to divide a single Kubernetes cluster into multiple virtual clusters`. This allows resources to be isolated from one another. Once a namespace is created, you can launch Kubernetes objects, like Pods, which will only exist in that namespace.
 
@@ -192,7 +193,7 @@ By using namespaces, you can `perform as many operations as you need while elimi
 <!---------------------------------------------------------------------------->
 
 <a id="ConfigMaps-and-Secrets"></a>
-### ConfigMaps & Secrets
+### ConfigMaps & Secrets [⇪](#Home)
 
 ConfigMaps and Secrets are two very important objects that `allow you to configure the apps that run in your Pods`. Configuring apps refers to setting various parameters or options that control the behaviors of the apps. This can include things like database connection strings or API keys.
 
@@ -213,7 +214,7 @@ ConfigMaps and Secrets are two very important objects that `allow you to configu
 <!---------------------------------------------------------------------------->
 
 <a id="Job"></a>
-### Job
+### Job [⇪](#Home)
 
 A job object is used to r`un specific tasks` that have the following properties:
 
