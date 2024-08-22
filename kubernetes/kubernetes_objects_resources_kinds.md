@@ -41,4 +41,24 @@ It's important to note that Deployment objects are used to manage stateless appl
 To accomplish this, Kubernetes uses a concept called reconciliation loops. A reconciliation loop is a process that compares the desired state of a system with its current state and takes actions to bring the current state in line with the desired state.
 
 
+<br><br>
+
+
+<!---------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------->
+
+
+### StatefulSet
+
+- A StatefulSet is a Kubernetes object that is used to manage stateful applications.
+- This state is typically stored in a persistent storage backend, such as a disk, or a database
+- The state is maintained even if the underlying Pods/containers are recreated. 
+- The most common example of a stateful component in applications is a database such as MySQL or MongoDB.
+
+> The StatefulSet ensures that each Pod is uniquely identified by a number, starting at zero.
+
+This allows for a consistent naming scheme for each Pod and its associated resources, such as persistent storage (for example, when Volumes are used).
+
+When a `Pod in a StatefulSet must be replaced`, for example, due to node failure, the new Pod is assigned the same numeric identifier as the previous Pod. This ensures that the new Pod has the same unique identity and is attached to the same persistent storage (Volume) that the previous Pod was using.
+
 
