@@ -12,7 +12,7 @@
 - [Service](#Service)
 - [Namespaces](#Namespaces)
 - [ConfigMaps-and-Secrets](#ConfigMaps-and-Secrets)
-- [Job](#Job)
+- [Jobs](#Jobs)
 
 
 
@@ -213,8 +213,8 @@ ConfigMaps and Secrets are two very important objects that `allow you to configu
 <!---------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------->
 
-<a id="Job"></a>
-### Job [⇪](#Home)
+<a id="Jobs"></a>
+### Jobs [⇪](#Home)
 
 A job object is used to `run specific tasks` that have the following properties:
 
