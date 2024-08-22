@@ -7,7 +7,7 @@
 - [ReplicaSet](#ReplicaSet)
 - [StatefulSet](#StatefulSet)
 - [DaemonSets](#DaemonSets)
-- [PersistentVolume](#ReplicaSet)
+- [PersistentVolume](#PersistentVolume)
 - [Stateful-vs-PersistentVolume](#Stateful-vs-PersistentVolume)
 - [Service](#Service)
 - [Namespaces](#Namespaces)
