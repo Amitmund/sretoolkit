@@ -55,7 +55,7 @@ To accomplish this, Kubernetes uses a concept called reconciliation loops. A rec
 - The state is maintained even if the underlying Pods/containers are recreated. 
 - The most common example of a stateful component in applications is a database such as MySQL or MongoDB.
 
-> The StatefulSet ensures that each Pod is uniquely identified by a number, starting at zero.
+- The `StatefulSet ensures that each Pod is uniquely identified by a number, starting at zero`.
 
 This allows for a consistent naming scheme for each Pod and its associated resources, such as persistent storage (for example, when Volumes are used).
 
