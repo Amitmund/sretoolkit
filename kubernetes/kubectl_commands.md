@@ -210,6 +210,26 @@ kubectl get po {your-pod} -o yaml
 
 ## labes
 
+> kubectl get po --show-labels
+
+> kubectl get po -L creation_method,env
+
+> kubectl label po my-pods creator=amitmund
+
+> kubectl label po my-app-2 env=debug --overwrite
+
+> kubectl get po -L creation_method,env
+
+> kubectl get po -l creation_method=manual
+
+> kubectl get po -l env
+
+
+### excluding a label.
+> kubectl get po -l '!env'
+
+
+
 
 
 
@@ -223,6 +243,24 @@ kubectl get po {your-pod} -o yaml
 
 <!------------------------------------------------------------------------------------------------------------------------------------>
 <!------------------------------------------------------------------------------------------------------------------------------------>
+
+
+
+
+
+
+<br>
+
+---
+
+<br>
+<br>
+
+
+<!------------------------------------------------------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------------------------------------------------------>
+
+
 
 
 ## Just command for now, more details later
