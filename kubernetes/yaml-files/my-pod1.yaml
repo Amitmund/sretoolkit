@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod-1
+spec:
+  containers:
+  - image: amitmund/my-app1
+    name: my-app1
+    ports:
+      - containerPord: 8080
+        protocol: TCP
