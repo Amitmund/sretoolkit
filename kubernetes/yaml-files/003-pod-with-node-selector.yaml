@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: pod
+metadata:
+  name: mypod-with-gpu
+spec:
+  nodeSelector:
+    gpu: "true"
+  containers:
+  - image: amitmund/my-app1
+    name: my-app1

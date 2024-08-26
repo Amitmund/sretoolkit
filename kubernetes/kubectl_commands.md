@@ -232,6 +232,60 @@ kubectl get po {your-pod} -o yaml
 
 
 
+<br>
+
+---
+
+<br>
+<br>
+
+
+<!------------------------------------------------------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------------------------------------------------------>
+
+## Node label
+
+> kubectl label node your-cluster-node key=value
+
+> kubectl label node my-node1 ssh=true gpu=true
+
+
+> kubectl get nodes -l gpu=true
+
+> kubectl get nodes -L gpu
+
+
+<br>
+
+---
+
+<br>
+<br>
+
+
+<!------------------------------------------------------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------------------------------------------------------>
+
+## Annotations
+
+> kubectl get pod pod-name -o yaml | grep -A2 "annotations:"
+
+
+```
+kubectl get pods etcd-minikube -n kube-system -o yaml | grep -i -A2 "annotations"
+  annotations:
+    kubeadm.kubernetes.io/etcd.advertise-client-urls: https://10.0.2.15:2379
+    kubernetes.io/config.hash: d3bb814607b61262cc219c8020a27fc0
+```
+
+> kubectl annotate pod my-app1 mycompany.com/someannotation="foo bar"
+
+
+
+## Adding and modifying annotations
+
+> kubectl annotate pod my-app1 mycompany.com/someannotation="foo bar"
+
 
 <br>
 
@@ -245,33 +299,23 @@ kubectl get po {your-pod} -o yaml
 <!------------------------------------------------------------------------------------------------------------------------------------>
 
 
-
-
-
-
-<br>
-
----
-
-<br>
-<br>
-
-
-<!------------------------------------------------------------------------------------------------------------------------------------>
-<!------------------------------------------------------------------------------------------------------------------------------------>
-
-
-
-
-## Just command for now, more details later
+## get namespaces
 
 
 > kubectl get ns
 
-> kubectl get po --namespace kube-system
+> kubectl get pod --namespace kube-system
+
+> kubectl get po -n kube-system
 
 
-<br><br>
+<br>
+
+---
+
+<br>
+<br>
+
 
 <!------------------------------------------------------------------------------------------------------------------------------------>
 <!------------------------------------------------------------------------------------------------------------------------------------>
@@ -290,20 +334,77 @@ metadata:
 
 > kubectl create -f custom-namespace.yaml
 
-> kubectl create namespace custom-namespace
+> kubectl create namespace custom-namespace1
 
-> kubectl create -f kubia-manual.yaml -n custom-namespace
 
 > alias kcd='kubectl config set-context $(kubectl config current- context) --namespace '
 
 
-<br><br>
+<br>
+
+---
+
+<br>
+<br>
+
 
 <!------------------------------------------------------------------------------------------------------------------------------------>
 <!------------------------------------------------------------------------------------------------------------------------------------>
 
+## creating objects in other namespaces
 
-> kubectl delete po kubia-gpu
+> kubectl create -f my-app1.yaml -n custom-namespace
+> kubectl create -f my-app1.yaml --namespace custom-namespace
+
+
+
+<br>
+
+---
+
+<br>
+<br>
+
+
+<!------------------------------------------------------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------------------------------------------------------>
+
+## To switch between namespaces
+
+Set the following alias in your bash profile.
+
+> alias ks-ns='kubectl config set-context $(kubectl config current-context) --namespace '
+
+> ks-ns some-namespace
+
+
+
+<br>
+
+---
+
+<br>
+<br>
+
+
+<!------------------------------------------------------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------------------------------------------------------>
+
+## Deleting pod (not using deployment or replication controller)
+
+> kubectl delete pod my-app1-pod1
+
+> kubectl delete po -l creation_method=manual
+
+> kubectl delete po -l rel=canary
+
+<br>
+
+> kubectl get ns
+
+> kubectl delete ns custom-namespace1
+
+> kubectl get ns
 
 
 
