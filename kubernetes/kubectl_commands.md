@@ -278,9 +278,6 @@ kubectl get pods etcd-minikube -n kube-system -o yaml | grep -i -A2 "annotations
     kubernetes.io/config.hash: d3bb814607b61262cc219c8020a27fc0
 ```
 
-> kubectl annotate pod my-app1 mycompany.com/someannotation="foo bar"
-
-
 
 ## Adding and modifying annotations
 
