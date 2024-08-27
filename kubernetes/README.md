@@ -310,6 +310,7 @@ kubectl get pods --namespace=<insert-namespace-name-here>
 - https://medium.com/slalom-technology/5-constructs-you-must-know-to-get-started-with-kubernetes-85e0079f9ace
 - https://chkrishna.medium.com/kubernetes-objects-e0a8b93b5cdc
 
+- https://pwittrock.github.io/docs/concepts/
 
 
 

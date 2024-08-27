@@ -284,6 +284,10 @@ kubectl get pods etcd-minikube -n kube-system -o yaml | grep -i -A2 "annotations
 > kubectl annotate pod my-app1 mycompany.com/someannotation="foo bar"
 
 
+> kubectl get pods etcd-minikube -n kube-system -o yaml | grep -i -A2 "annotations"
+
+
+
 <br>
 
 ---
@@ -296,8 +300,7 @@ kubectl get pods etcd-minikube -n kube-system -o yaml | grep -i -A2 "annotations
 <!------------------------------------------------------------------------------------------------------------------------------------>
 
 
-## get namespaces
-
+## Using namespaces to group resources
 
 > kubectl get ns
 
@@ -306,6 +309,7 @@ kubectl get pods etcd-minikube -n kube-system -o yaml | grep -i -A2 "annotations
 > kubectl get po -n kube-system
 
 
+
 <br>
 
 ---
@@ -316,6 +320,8 @@ kubectl get pods etcd-minikube -n kube-system -o yaml | grep -i -A2 "annotations
 
 <!------------------------------------------------------------------------------------------------------------------------------------>
 <!------------------------------------------------------------------------------------------------------------------------------------>
+
+
 
 
 ### Creating namespace from a YAML file  "custom-namespace.yaml" 
