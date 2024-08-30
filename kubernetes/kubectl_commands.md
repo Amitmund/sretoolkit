@@ -397,17 +397,34 @@ Set the following alias in your bash profile.
 
 > kubectl delete pod my-app1-pod1
 
+
+### deleting a pod by label selectors:
 > kubectl delete po -l creation_method=manual
 
 > kubectl delete po -l rel=canary
 
 <br>
 
+### Deleting pods by deleting the whole namespace
+
+Deleting the whole namespace (the pods will be deleted along with the namespace automatically), using the following command.
+
 > kubectl get ns
 
 > kubectl delete ns custom-namespace1
 
 > kubectl get ns
+
+
+### Deleting all pods in a namespace, while keeping the namespace (Will not work)
+
+> kubectl get pods
+
+> kubectl delete pod --all
+
+<br>
+
+**`Note:` Current pod is terminating, but a new pod has comeup!** No metter how many times you delete all pods, a new pod called {name}-{something} will emerge.
 
 
 
