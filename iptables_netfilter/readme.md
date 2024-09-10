@@ -5,6 +5,7 @@ How Iptables inspecting and filtering network traffic.
 # Random notes:
 
 - https://santoshk.dev/posts/2023/iptables-explained-an-introduction-to-linux-firewalling/
+- 
 - iptables is a tool to manipulate network packets.
 - Iptables is a powerful and versatile firewall tool that is used to protect and secure networks
 
