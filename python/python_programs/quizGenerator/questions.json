@@ -1,0 +1,53 @@
+[
+    {
+        "question": "What is the capital of France?",
+        "options": ["Paris", "London", "Berlin", "Rome"],
+        "correct": "Paris"
+    },
+    {
+        "question": "What is the largest planet in our solar system?",
+        "options": ["Earth", "Saturn", "Jupiter", "Uranus"],
+        "correct": "Jupiter"
+    },
+    {
+        "question": "Who painted the Mona Lisa?",
+        "options": ["Leonardo da Vinci", "Michelangelo", "Raphael", "Caravaggio"],
+        "correct": "Leonardo da Vinci"
+    },
+    {
+        "question": "What is the chemical symbol for gold?",
+        "options": ["Ag", "Au", "Hg", "Pb"],
+        "correct": "Au"
+    },
+    {
+        "question": "What is the largest mammal on Earth?",
+        "options": ["Blue whale", "Fin whale", "Humpback whale", "Sperm whale"],
+        "correct": "Blue whale"
+    },
+    {
+        "question": "What is the smallest country in the world?",
+        "options": ["Vatican City", "Monaco", "Nauru", "Tuvalu"],
+        "correct": "Vatican City"
+    },
+    {
+        "question": "Who wrote Romeo and Juliet?",
+        "options": ["William Shakespeare", "Jane Austen", "Charles Dickens", "J.K. Rowling"],
+        "correct": "William Shakespeare"
+    },
+    {
+        "question": "What is the highest mountain in the solar system?",
+        "options": ["Mount Everest", "Olympus Mons", "Mauna Kea", "Denali"],
+        "correct": "Olympus Mons"
+    },
+    {
+        "question": "What is the largest living species of lizard?",
+        "options": ["Komodo dragon", "Saltwater crocodile", "Black mamba", "African elephant"],
+        "correct": "Komodo dragon"
+    },
+    {
+        "question": "What is the deepest part of the ocean?",
+        "options": ["Mariana Trench", "Grand Canyon", "Great Barrier Reef", "Mount Everest"],
+        "correct": "Mariana Trench"
+    }
+]
+
