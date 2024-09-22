@@ -125,10 +125,9 @@ Docker connectivity:
 ```
 
 
-```
-### Bridge Filters Diagram
 
-![bridge-filters-diagram](./images/bridge-filters-diagram.png)
+### Bridge Filters :
+
 
 - `ebtables` is a filtering tool for a Linux-based bridging firewall.
 - `ebtables` can be used together with the other basic tools used for bridging, like `brctl`.
@@ -166,7 +165,7 @@ Docker connectivity:
     - `log`: This target is used to log packets.
     - `ulog`: This target is used to log packets to a userspace logging daemon.
     - `redirect`: This target is used to redirect packets to a different destination.
-``` 
+
 
 ```
 graph LR
