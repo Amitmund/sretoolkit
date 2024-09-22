@@ -13,8 +13,21 @@ How Iptables inspecting and filtering network traffic.
 ---
 ---
 
-Links: https://www.youtube.com/watch?v=6Ra17Qpj68c
+Links: 
 
+https://www.youtube.com/watch?v=6Ra17Qpj68c
+
+https://www.digitalocean.com/community/tutorials/a-deep-dive-into-iptables-and-netfilter-architecture
+
+https://www.netfilter.org/documentation/HOWTO/netfilter-hacking-HOWTO-3.html
+
+https://www.frozentux.net/iptables-tutorial/chunkyhtml/c3965.html
+
+http://ipset.netfilter.org/iptables-extensions.man.html
+
+http://ebtables.netfilter.org/br_fw_ia/br_fw_ia.html
+
+[1] -- https://backreference.org/2010/06/11/iptables-debugging/
 
 <br>
 
@@ -23,7 +36,7 @@ Links: https://www.youtube.com/watch?v=6Ra17Qpj68c
 
 <br>
 
-## IMP:
+## `IMP`:
 
 Traffic first fall into chain of different tables supporting that chain,and then Rules in that tables related to that chain.
 
@@ -39,6 +52,150 @@ Traffic first fall into chain of different tables supporting that chain,and then
     - mangle table's POSTROUTING chain > nat table's POSTROUTING chain.
 <br>
 
+
+<br>
+
+---
+---
+
+<br>
+
+### Targets
+As we’ve mentioned before, chains allow you to filter traffic by adding rules to them. So for example, you could add a rule on the filter table’s INPUT chain to match traffic on port 22. But what would you do after matching them? That’s what targets are for — they decide the fate of a packet.
+
+Some targets are terminating, which means that they decide the matched packet’s fate immediately. The packet won’t be matched against any other rules. The most commonly used terminating targets are:
+
+
+<br>
+
+| Target Name | Description | Table |
+| --- | --- | --- |
+| ACCEPT | This causes iptables to accept the packet. | All tables |
+| DROP | iptables drops the packet. | All tables |
+| REJECT | iptables “rejects” the packet. | All tables |
+| RETURN | The packet is returned to the previous chain. | All tables |
+| DNAT | Destination NAT. | nat table |
+| SNAT | Source NAT. | nat table |
+| MASQUERADE | Similar to SNAT, but the source IP address is set to the IP address of the outgoing interface. | nat table |
+| REDIRECT | Redirect the packet to the machine itself. | nat table |
+| LOG | Log the packet. | All tables |
+| ULOG | Log the packet to a userspace logging daemon. | All tables |
+| REJECT | Reject the packet and send an error packet back. | All tables |
+| MARK | Set a mark on the packet for use in advanced routing. | mangle table |
+| TOS | Set the Type of Service (TOS) field in the packet. | mangle table |
+| TTL | Set the Time to Live (TTL) field in the packet. | mangle table |
+| DSCP | Set the Differentiated Services Code Point (DSCP) field in the packet. | mangle table |
+| ECN | Set the Explicit Congestion Notification (ECN) field in the packet. | mangle table |
+| CONNMARK | Set the connection mark for the packet. | mangle table |
+| CONNSECMARK | Set the connection security mark for the packet. | mangle table |
+| TCPMSS | Set the TCP Maximum Segment Size (MSS) for the packet. | mangle table |
+| TRACE  | Enable IP tracing for the packet. | mangle table |
+| MIRROR | Mirror the packet. | mangle table |
+| QUEUE | Queue the packet for userspace processing. | mangle table |
+| SET | Set the packet’s mark, TTL, TOS, DSCP, ECN, or IP header fields. | mangle table |
+| SETRF | Set the packet’s routing flags. | mangle table |
+
+
+#### Example:
+
+> iptables -t raw -A PREROUTING  p -j TRACE
+
+> iptables -t raw -A OUTPUT -j TRACE
+
+<br> 
+
+Docker connectivity:
+> iptables -t raw -A OUTPUT -i docker0 -j TRACE
+
+`OUTPUT` chain of `RAW` table for `docker0` interface with `TRACE` traget.
+
+
+
+```
+
+- iptables can use extended packet matching modules with the -m or --match options, followed by the matching module name
+- Some important ones
+    - connmark [!] --mark value[/mask] Matches packets in connections with the given mark value (if a mask is specified, this is logically ANDed with the mark before the comparison).
+    - conntrack  [!] --ctstate state Matches packets with given conntrack state.
+    - ipvs   [!] --ipvs dport:portname Matches packets with given ipvs portname.
+    - mark    [!] --mark value[/mask] Matches packets with the given mark value (if a mask is specified, this is logically ANDed with the mark before the comparison). 
+
+    - redirect This target is only valid in the nat table, in the PREROUTING and OUTPUT chains, and user-defined chains which are only called from those chains. It redirects the packet to the machine itself by changing the destination IP to the primary address of the incoming interface (locally-generated packets are mapped to the localhost address, 127.0.0.1 for IPv4 and ::1 for IPv6).
+
+```
+
+
+```
+### Bridge Filters Diagram
+
+![bridge-filters-diagram](./images/bridge-filters-diagram.png)
+
+- `ebtables` is a filtering tool for a Linux-based bridging firewall.
+- `ebtables` can be used together with the other basic tools used for bridging, like `brctl`.
+- `ebtables` is analogous to `iptables`, but `ebtables` is for a bridging firewall, while `iptables` is for a routing firewall.
+- `ebtables` can be used to examine and modify the Ethernet frames as they make their way through a bridge.
+- `ebtables` is used to set up, maintain, and inspect the tables of Ethernet frame rules in the Linux kernel.
+
+### ebtables Tables
+
+- `ebtables` has three tables:
+    - `filter`: This table is used to drop or allow packets.
+    - `nat`: This table is used to make network address translations.
+    - `broute`: This table is used to make bridging route decisions.
+
+### ebtables Chains
+
+- `ebtables` has five built-in chains:
+    - `INPUT`: This chain is used to filter incoming packets.
+    - `OUTPUT`: This chain is used to filter outgoing packets.
+    - `FORWARD`: This chain is used to filter forwarded packets.
+    - `PREROUTING`: This chain is used to filter packets before routing decisions are made.
+    - `POSTROUTING`: This chain is used to filter packets after routing decisions are made.
+
+### ebtables Targets
+
+- `ebtables` has several targets:
+    - `ACCEPT`: This target is used to accept packets.
+    - `DROP`: This target is used to drop packets.
+    - `CONTINUE`: This target is used to continue processing the packet in the current chain.
+    - `RETURN`: This target is used to return the packet to the previous chain.
+    - `dnat`: This target is used to make network address translations.
+    - `snat`: This target is used to make source network address translations.
+    - `dscp`: This target is used to set the DSCP field in the packet.
+    - `mark`: This target is used to set the mark field in the packet.
+    - `log`: This target is used to log packets.
+    - `ulog`: This target is used to log packets to a userspace logging daemon.
+    - `redirect`: This target is used to redirect packets to a different destination.
+``` 
+
+```
+graph LR
+    A[Packet Arrival] -->|PREROUTING|> B[Raw Table]
+    B -->|PREROUTING|> C[Mangle Table]
+    C -->|PREROUTING|> D[NAT Table]
+    D -->|Routing Decision|> E[Forward Chain]
+    E -->|FORWARD|> F[Mangle Table]
+    F -->|FORWARD|> G[Filter Table]
+    G -->|FORWARD|> H[POSTROUTING]
+    H -->|POSTROUTING|> I[Mangle Table]
+    I -->|POSTROUTING|> J[NAT Table]
+    J --> K[Packet Departure]
+    L[Local Process] -->|OUTPUT|> M[Raw Table]
+    M -->|OUTPUT|> N[Mangle Table]
+    N -->|OUTPUT|> O[NAT Table]
+    O -->|OUTPUT|> P[Filter Table]
+    P -->|OUTPUT|> Q[POSTROUTING]
+    Q -->|POSTROUTING|> R[Mangle Table]
+    R -->|POSTROUTING|> S[NAT Table]
+    S --> T[Packet Departure]
+    U[Packet Arrival] -->|PREROUTING|> V[Raw Table]
+    V -->|PREROUTING|> W[Mangle Table]
+    W -->|PREROUTING|> X[NAT Table]
+    X -->|Routing Decision|> Y[INPUT Chain]
+    Y -->|INPUT|> Z[Mangle Table]
+    Z -->|INPUT|> AA[Filter Table]
+    AA --> BB[Local Process]
+```  
 
 <br>
 
@@ -163,8 +320,33 @@ So, logically: the traffic flow through `chains` of different  `tables` is as fo
 
 <br>
 
+### The packet flow
+![iptables-fig003-packet-flow-netfilter](./images/iptables-fig003-packet-flow-netfilter.png)
+
+- `Bridges` work at the `MAC (Media Access Control) address level`, forwarding frames based on the destination `MAC address`.
+
+- `Network` work at `IP address level`, forwarding packets based on the destination IP address.
+
+- Bridge level operates at Layer 2 (MAC addresses), while network level operates at Layer 3 (IP addresses).
 
 
+
+###  Order of Chain evaluation across tables
+-`raw` : Used to bypass connection tracking
+- (connection tracking enabled)
+- `mangle`  : Used to modify packet and connection properties
+- `nat` (DNAT) 
+- (routing decision)
+-  `filter` : Used to filter packets
+- `security`: (connection tracking disabled)
+- `nat` (SNAT)
+
+<br>
+
+---
+---
+
+<br>
 
 
 The Linux kernel comes with a packet filtering framework named `netfilter`.  `netfilter` is a set of hooks inside the Linux kernel that allows you to filter network packets. `iptables` is a user-space program that uses the `netfilter` framework to filter network.   `iptables` is a command-line tool that allows you to configure the `netfilter` framework. `iptables` is used to filter network traffic based on various criteria such as source and destination IP. `iptables` is also used to configure network address translation (NAT) and other network-related. 
