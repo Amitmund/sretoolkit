@@ -29,6 +29,10 @@ http://ebtables.netfilter.org/br_fw_ia/br_fw_ia.html
 
 [1] -- https://backreference.org/2010/06/11/iptables-debugging/
 
+https://web.archive.org/web/20160413034150/https://jonatan.nilsson.is/running-a-semi-stateless-linux-router-for-private-network/
+
+
+
 <br>
 
 ---
@@ -358,6 +362,8 @@ The `INPUT` chain is used to filter network traffic that is coming into the fire
 The `OUTPUT` chain is used to filter outgoing network traffic. 
 The `FORWARD` chain is used to filter network traffic that is being forwarded by the firewall.  
 
+
+
 <br>
 
 ---
@@ -393,7 +399,7 @@ The `FORWARD` chain is used to filter network traffic that is being forwarded by
             - `POSTROUTING` (built-in chains)
             - `OUTPUT` (built-in chains)
             ```
-            sudo iptables -t filter --list
+            sudo iptables -t nat --list
             ```
 
     - `Mangle` Table:
@@ -406,13 +412,32 @@ The `FORWARD` chain is used to filter network traffic that is being forwarded by
             - `INPUT` (built-in chains)
             - `FORWARD` (built-in chains)
             - `POSTROUTING` (built-in chains)
+            ```
+            sudo iptables -t mangel --list
+            ```
 
     - `Raw` Table:
         - Used for connection tracking.
         - iptables is a stateful firewall, which means that packets are inspected with respect to their “state”. (For example, a packet could be part of a new connection, or it could be part of an existing connection.) The raw table allows you to work with packets before the kernel starts tracking its state. In addition, you can also exempt certain packets from the state-tracking machinery.
+        - This table contains `three built-in chains`, that are used to process packets before the kernel
+            - `PREROUTING` (built-in chains)
+            - `OUTPUT` (built-in chains)
+            - `INPUT` (built-in chains)
+            ```
+            sudo iptables -t raw --list
+            ```
+            
 
     - `Security` Table:
         - SELinux policy is applied on the packets.
+        - This table is used to enforce SELinux policy on packets.
+        - This table contains `three built-in chains`, that are used to process packets before the kernel
+            - `INPUT` (built-in chains)
+            - `OUTPUT` (built-in chains)
+            - `FORWARD` (built-in chains)
+            ```
+            sudo iptables -t security --list
+            ```
 
 
 
@@ -423,18 +448,4 @@ The `FORWARD` chain is used to filter network traffic that is being forwarded by
 
 <br>
 
-
-
-
-- `Chains` (There are `5 chains` in iptables)
-    - Chains are like points in route of a packet where you can apply rules.
-
-    - Pre-routing Chain:
-        - Pre-routing chain is applied to any incoming packet very soon after entring the network. This chain is processed before any routing descision have been made regarding where to send the packet. It is typically used to modify the destination IP address of incoming packets, such as when implementing port forwarding.
-
-
-        
-
-
-- Rules
 
