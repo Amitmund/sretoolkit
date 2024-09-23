@@ -66,6 +66,7 @@ A few interesting things to observe:
 
 ![lab_fig_2](./images/fig_lab_2.png)
 
+> our eBPF code should be called whenever a open and openat syscall is issued ("entered", therefore sys_enter).
 
 - sys_enter_open
 ```
@@ -217,6 +218,19 @@ Usage: readelf <option(s)> elf-file(s)
 root@server:/opt/ebpf/bcc/libbpf-tools# 
 
 ```
+
+
+<br>
+
+---
+---
+
+<br>
+
+
+
+
+Currently `opensnoop` is not running. Let's have a look `if we have any eBPF programs running` on our machine. We can leverage `bpftool` for that —the Swiss Army knife for `working with eBPF`. It can be found on `GitHub (https://github.com/libbpf/bpftool)` or for some Linux distributions (e.g. Ubuntu and Fedora), directly in the Linux kernel repository.
 
 
 
