@@ -22,3 +22,7 @@ Installing Python on Windows, Mac, and Linux | Google IT Automation with Python 
 
 Some topics
 - https://www.youtube.com/watch?v=sPyZALF1tPc&list=PLTZYG7bZ1u6ownj2yTUBv2kaaSl2vs2iV
+
+
+Object-Oriented Programming with Python in 2024 | 7-Hour FREE Course for Beginners
+- https://www.youtube.com/watch?v=-YhddS9_uus
