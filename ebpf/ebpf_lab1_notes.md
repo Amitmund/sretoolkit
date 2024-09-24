@@ -232,5 +232,30 @@ root@server:/opt/ebpf/bcc/libbpf-tools#
 
 Currently `opensnoop` is not running. Let's have a look `if we have any eBPF programs running` on our machine. We can leverage `bpftool` for that —the Swiss Army knife for `working with eBPF`. It can be found on `GitHub (https://github.com/libbpf/bpftool)` or for some Linux distributions (e.g. Ubuntu and Fedora), directly in the Linux kernel repository.
 
+<br>
 
+opensnop added 4 more tracepoint on the ebpf: 
+
+```
+155: tracepoint  name tracepoint__syscalls__sys_enter_open  tag 07014be5359438f8  gpl
+        loaded_at 2024-09-23T23:09:30+0000  uid 0
+        xlated 240B  jited 137B  memlock 4096B  map_ids 53,50
+        btf_id 137
+        pids opensnoop(4102)
+157: tracepoint  name tracepoint__syscalls__sys_enter_openat  tag 8ee3432dcd98ffc3  gpl
+        loaded_at 2024-09-23T23:09:30+0000  uid 0
+        xlated 240B  jited 137B  memlock 4096B  map_ids 53,50
+        btf_id 137
+        pids opensnoop(4102)
+158: tracepoint  name tracepoint__syscalls__sys_exit_open  tag 37f628f9e857b071  gpl
+        loaded_at 2024-09-23T23:09:30+0000  uid 0
+        xlated 792B  jited 546B  memlock 4096B  map_ids 50,53,51
+        btf_id 137
+        pids opensnoop(4102)
+159: tracepoint  name tracepoint__syscalls__sys_exit_openat  tag 37f628f9e857b071  gpl
+        loaded_at 2024-09-23T23:09:30+0000  uid 0
+        xlated 792B  jited 546B  memlock 4096B  map_ids 50,53,51
+        btf_id 137
+        pids opensnoop(4102)
+```
 
