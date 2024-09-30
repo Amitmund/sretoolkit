@@ -26,3 +26,36 @@ Some topics
 
 Object-Oriented Programming with Python in 2024 | 7-Hour FREE Course for Beginners
 - https://www.youtube.com/watch?v=-YhddS9_uus
+
+
+### Topics
+
+```
+list methods
+list slicing
+Dictionary - What is key, value in dictionary?
+Use of Sets/ forzensets
+range vs xrange, input vs raw_input
+loops
+File I/O
+Functions and classes
+What is args/kwargs?
+Built-in Functions
+Debugging and Error Handling (try...except)
+Regex
+list & dictionary comprehension
+Learn map, lambda, filter, reduce
+Iterator
+Generator
+Decorator
+Object Oriented Programming
+Inheritance
+Polymorphism
+Abstraction
+Encapsulation
+Duck typing
+classmethod and staticmethod
+deepcopy vs shallow copy
+External Modules
+```
+
