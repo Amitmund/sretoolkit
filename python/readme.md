@@ -59,3 +59,5 @@ deepcopy vs shallow copy
 External Modules
 ```
 
+Learn python in 10 minutes
+- https://www.stavros.io/tutorials/python/
