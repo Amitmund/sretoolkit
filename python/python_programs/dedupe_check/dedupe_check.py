@@ -35,3 +35,5 @@ if __name__ == "__main__":
         print("Error: Please provide a valid directory path.")
         sys.exit(1)
     check_duplicates(directory)
+
+    
