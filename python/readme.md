@@ -23,9 +23,23 @@ Installing Python on Windows, Mac, and Linux | Google IT Automation with Python 
 Some topics
 - https://www.youtube.com/watch?v=sPyZALF1tPc&list=PLTZYG7bZ1u6ownj2yTUBv2kaaSl2vs2iV
 
+<br>
 
 Object-Oriented Programming with Python in 2024 | 7-Hour FREE Course for Beginners
 - https://www.youtube.com/watch?v=-YhddS9_uus
+
+
+<br>
+
+How to create Python Package and Upload to PyPi
+- https://www.youtube.com/watch?v=h6oa_FwzFwU
+
+
+<br>
+
+
+<!-- -------------------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------------------- -->
 
 
 ### Topics
@@ -59,11 +73,12 @@ deepcopy vs shallow copy
 External Modules
 ```
 
+<br>
+
+
+<!-- -------------------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------------------- -->
+
+
 Learn python in 10 minutes
 - https://www.stavros.io/tutorials/python/
-
-### Good to learn python links:
-- https://www.youtube.com/watch?v=h6oa_FwzFwU
-
-
-### How to create Python Package and Upload to PyPi
