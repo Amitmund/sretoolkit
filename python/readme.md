@@ -61,3 +61,9 @@ External Modules
 
 Learn python in 10 minutes
 - https://www.stavros.io/tutorials/python/
+
+### Good to learn python links:
+- https://www.youtube.com/watch?v=h6oa_FwzFwU
+
+
+### How to create Python Package and Upload to PyPi
