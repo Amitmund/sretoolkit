@@ -17,6 +17,11 @@ tools related to sretoolkit.
 <br>
 <br>
 
+# Free google learning path links:
+
+- https://www.cloudskillsboost.google/paths/20 --> DevOps Engineer, SRE Learning Path
+- https://www.cloudskillsboost.google/paths/11 --> Cloud Engineer Learning Path
+
 # Structure
 
 ```
