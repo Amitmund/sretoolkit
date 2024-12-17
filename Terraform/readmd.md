@@ -181,6 +181,44 @@
 
 <br>
 
+
 ---
 ---
+
+
+HCL: Hashicorp Configuration Language
+
+<img src="./terraform_images/terraform_directory_structure.png">
+
+<br>
+
+
+```
+-- main.tf
+    -- servers/
+        -- main.tf
+        -- providers.tf
+        -- variables.tf
+        -- outputs.tf
+        -- terraform.tfvars
+
+```
+
+
+```tf
+<BLOCK TYPE> "<BLOCK LABEL>" "<BLOCK LABEL>" {
+    # Block body
+    <IDENTIFIER> = < EXPRESSION> #Argument
+}
+```
+
+<br>
+
+<img src="./terraform_images/HCL_syntax.png">
+
+<br>
+
+
+- Identifiers can include letters, underscores, hyphens, and digits, but cannot start with a digit.
+
 
