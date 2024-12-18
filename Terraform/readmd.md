@@ -222,3 +222,128 @@ HCL: Hashicorp Configuration Language
 - Identifiers can include letters, underscores, hyphens, and digits, but cannot start with a digit.
 
 
+<br>
+
+---
+---
+
+
+- Resources are code blocks that define the infrastructure components.
+- A resource is identified by the `keyword` `resource`, followed by the `resource type` and a `custom name`.
+- The resource type depends on the provider defined in your configuration.
+- Inside the curly brackets are the resources arguments, where you specify the inputs needed for the configuration.
+- Terraform uses the resource type and the resource name to identify an infrastructure element.
+- The keyword resource identifies the block as a cloud infrastructure component.
+- The resource type is google_storage_bucket, which identifies the Google Cloud resource.
+- This terminology is Terraform-specific and the convention cannot be customized.
+- The resource type varies based on the provider defined.
+
+<br>
+
+---
+---
+
+<br>
+
+<img src="./terraform_images/terraform_resource1.png">
+
+<br>
+
+<br>
+
+<img src="./terraform_images/terraform_resource2.png">
+
+<br>
+
+
+---
+---
+
+<br>
+
+<img src="./terraform_images/provider.png">
+
+- The version argument is optional, but recommended.
+- If the version isn't specified, Terraform will automatically download the most recent provider during initialization.
+
+<br>
+
+---
+---
+
+
+<br>
+
+<img src="./terraform_images/variable1.png">
+
+- In this example, `main.tf` declares a Cloud Storage bucket.
+- The `location` attribute `has been parameterized` `because it’s declared as a variable in the` `variables.tf` file.
+- By parameterizing the attribute, you can define the values of these variables at run time.
+
+<br>
+
+>> Check the variables.tf files first, to know, if an attribute is parameterized or part or not.
+>> If an attribute is parameterized, you can define the value of the variable in the terraform .tfvars file.
+
+<br>
+
+---
+---
+
+<br>
+
+
+<img src="./terraform_images/outputs.png">
+
+- The outputs.tf file holds output values from your resources.
+- Resource instances managed by Terraform each export attributes whose values can be used elsewhere in configuration.
+- If needed, output values are a way to expose some of that information.
+- Output values are not automatically exported, you must explicitly declare them in the outputs.tf file.
+
+
+<br>
+
+---
+--
+
+<br>
+
+<img src="./terraform_images/tfstate1.png">
+
+
+
+<br>
+
+- By default, the state file is stored locally, but it can also be stored remotely.
+- Remote storage is often the preferred method when working in a team environment.
+- Do not modify or touch this file; it’s created and updated automatically.
+
+
+
+---
+---
+
+<br>
+
+<img src="./terraform_images/modules.png">
+
+- Terraform module is a set of Terraform configuration files in a single directory.
+- Even a simple configuration consisting of a single directory with one or more .
+- tf files is considered a module.
+- Modules are the primary method for code reuse in Terraform.
+- can I link a file within that directory?
+- Modules are the primary method for code reuse in Terraform.
+- You can use an `upstream module` from the HashiCorp module registry or create your own.
+
+
+
+<br>
+
+<!-- --------------------------------------------- -->
+<!-- --------------------------------------------- -->
+
+## Terraform Commands:
+
+
+
+
